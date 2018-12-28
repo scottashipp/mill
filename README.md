@@ -1,7 +1,7 @@
 mill
 ====
 
-![logo](media/mill-rind.png?raw=true)
+![logo](media/mill-rind-90x90.png?raw=true)
 
 Java library to make run-of-the-mill tasks more elegant. 
 
