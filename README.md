@@ -1,6 +1,8 @@
 mill
 ====
 
+![logo](media/mill-rind.png?raw=true)
+
 Java library to make run-of-the-mill tasks more elegant. 
 
 Compatible with Java 8+.
