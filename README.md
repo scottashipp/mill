@@ -1,18 +1,15 @@
-# mill
-Makes run-of-the-mill tasks in Java more elegant.
+mill
+====
+
+Java library to make run-of-the-mill tasks more elegant. 
 
 Compatible with Java 8+.
 
 ## In this README
-* Contribution guidelines
 * Some examples
+* Contribution guidelines
 * Where to find help
-
-
-## Contribution guidelines
-Please feel free to file issues or open pull requests against this repo 
-and I'll make sure they are reviewed.
-
+* License
 
 ## Some examples
 
@@ -21,7 +18,7 @@ The following are just a few of the things you'll find in mill.
 #### Fluent interface for null conditional operations
 If you have a chain of calls into an object graph (such as `user.getEmail().getDomain().length()`) and you care about avoiding a NullPointerException, you might write code like this:
 
-```
+```java
     int length = 0;
     if(user != null) {
         Email userEmail = user.getEmail();
@@ -36,7 +33,7 @@ If you have a chain of calls into an object graph (such as `user.getEmail().getD
 
 With the `NullSafe` class, you can convert the above to:
 
-```
+```java
 int length = NullSafe.of(user)
                      .call(User::getEmail)
                      .call(Email::getDomain)
@@ -45,7 +42,7 @@ int length = NullSafe.of(user)
 ```
 
 #### Join a stream of non-string objects together into a string
-```
+```java
 Stream<Holiday> majorUsHolidays = Stream.of(newYears, easter, independenceDay, thanksgiving, christmas);
 
 // standard Java requires us to first map Object::toString
@@ -59,7 +56,7 @@ majorUsHolidays.collect(CustomCollectors.joining(", "));
 
 Given the following stream, suppose we want to find names with a maximum length of 12 and in the alphabetical range A-M.
 
-```
+```java
     Stream<String> engineeringTeam = Stream.of(
                 null, "Mackenzie Miller", "Jane Brown", "Shannon Smith",
                 "Riley Joson", "Tracy Roberts", "Frankie Chen",
@@ -70,7 +67,7 @@ Given the following stream, suppose we want to find names with a maximum length 
 
 With standard Java we might apply the multiple filters in order like this.
 
-```
+```java
 // standard java requires multiple filters
 String staffAtoMWithShortNames = engineeringTeam
                      .filter(Objects::nonNull)
@@ -85,7 +82,7 @@ String staffAtoMWithShortNames = engineeringTeam
 Mill has predicates for these common tasks, allowing fluent
 predicate composition. This can be very readable with a couple of static
 imports.
-```
+```java
 // mill
 import static com.scottshipp.code.mill.Strings.*;
 
@@ -94,7 +91,7 @@ String staffAtoMWithShortNames = engineeringTeam.filter(maxLen12AndRangeAToM).co
 ```
 
 #### Filter out elements in a stream that aren't found in other streams
-```
+```java
  // standard Java, one way to do it
  Set<String> distinctItemsInStream2 = stream2.collect(Collectors.toSet());
  Set<String> distinctItemsInStream3 = stream3.collect(Collectors.toSet());
@@ -107,9 +104,17 @@ String staffAtoMWithShortNames = engineeringTeam.filter(maxLen12AndRangeAToM).co
  StreamOps.intersection(stream1, stream2, stream3, stream4);
 ```
 
+## Contribution guidelines
+Please contribute by [forking the project](https://guides.github.com/activities/forking/) and opening a pull request.
+
 ## Where to find help
 First, check the javadoc! This is a Maven project so you can find the
 javadoc by cloning the repo to your local system, running `mvn javadoc:javadoc`,
 and then looking in the target/site folder.
 
-If you still have questions [contact Scott Shipp](http://code.scottshipp.com/contact). 
+If you still need general help using mill, you can contact me via [code.scottshipp.com](http://code.scottshipp.com/contact).
+
+If you found an issue, you are welcome to file an issue on [github](https://github.com/scottashipp/WordPlay) or open a merge request.
+
+## License
+Mill is made available under the MIT License. See the LICENSE file for more details.
