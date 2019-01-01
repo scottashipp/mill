@@ -110,13 +110,17 @@ String staffAtoMWithShortNames = engineeringTeam.filter(maxLen12AndRangeAToM).co
 Please contribute by [forking the project](https://guides.github.com/activities/forking/) and opening a pull request.
 
 ## Where to find help
-First, check the javadoc! This is a Maven project so you can find the
-javadoc by cloning the repo to your local system, running `mvn javadoc:javadoc`,
-and then looking in the target/site folder.
+First, check the API documentation! This is a Maven project so you can always generate the latest API documentation with the javadoc tool as follows:
 
-If you still need general help using mill, you can contact me via [code.scottshipp.com](http://code.scottshipp.com/contact).
+1. Clone the repo to your local system.
+2. Run `mvn javadoc:javadoc`
+3. Look in the target/site/apidocs folder.
 
-If you found an issue, you are welcome to file an issue on [github](https://github.com/scottashipp/WordPlay) or open a merge request.
+You can also check the [hosted documentation](http://code.scottshipp.com/mill-javadocs/) at code.scottshipp.com. Important! There is no guarantee that this link has the latest documentation.
+
+If the documentation doesn't answer your question, and you still need general help using mill, you can contact me via [code.scottshipp.com](http://code.scottshipp.com/contact).
+
+If you found an issue with the library, you are welcome to file an issue on [github](https://github.com/scottashipp/mill) or open a merge request.
 
 ## License
 Mill is made available under the MIT License. See the LICENSE file for more details.
