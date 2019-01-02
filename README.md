@@ -1,5 +1,6 @@
-mill
+mill [![Build Status](https://travis-ci.com/scottashipp/mill.svg?branch=master)](https://travis-ci.com/scottashipp/mill.svg?branch=master)
 ====
+
 
 ![logo](media/mill-rind-90x90.png?raw=true)
 
