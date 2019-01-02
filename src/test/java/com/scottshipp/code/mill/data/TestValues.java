@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 public final class TestValues {
 
     public static final Holiday NEW_YEARS = new Holiday(LocalDate.of(2018, 1, 1));
+    public static final Holiday EASTER = new Holiday(LocalDate.of(2018, 4, 1));
     public static final Holiday MEMORIAL_DAY = new Holiday(LocalDate.of(2018, 5, 28));
     public static final Holiday INDEPENDENCE_DAY = new Holiday(LocalDate.of(2018, 7, 4));
     public static final Holiday LABOR_DAY = new Holiday(LocalDate.of(2018, 9, 3));
@@ -15,9 +16,13 @@ public final class TestValues {
     public static final Holiday DAY_BEFORE_CHRISTMAS = new Holiday(CHRISTMAS.getDate().minusDays(1));
 
     public static Stream<Holiday> allHolidays() {
-        return Stream.of(NEW_YEARS, MEMORIAL_DAY,
+        return Stream.of(NEW_YEARS, EASTER, MEMORIAL_DAY,
                 INDEPENDENCE_DAY, LABOR_DAY, THANKSGIVING, DAY_AFTER_THANKSGIVING,
                 DAY_BEFORE_CHRISTMAS, CHRISTMAS);
+    }
+
+    public static Stream<Holiday> majorUsHolidays() {
+        return allHolidays();
     }
 
     public static final Birthday JOHN = new Birthday("John", LocalDate.of(1954, 11, 22));

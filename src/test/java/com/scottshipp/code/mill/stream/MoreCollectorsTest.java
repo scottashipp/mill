@@ -1,5 +1,7 @@
 package com.scottshipp.code.mill.stream;
 
+import static com.scottshipp.code.mill.data.TestValues.*;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,6 +14,19 @@ import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class MoreCollectorsTest {
+
+    @Test
+    public void testJoiningCollector() {
+
+        String standardJava = majorUsHolidays()
+                .map(Object::toString)
+                .collect(Collectors.joining(", "));
+        assertEquals("2018-01-01, 2018-04-01, 2018-05-28, 2018-07-04, 2018-09-03, 2018-11-22, 2018-11-23, 2018-12-24, 2018-12-25", standardJava);
+
+        // mill doesn't require the extra map(Object::toString) call
+        String withMill = majorUsHolidays().collect(MoreCollectors.joining(", "));
+        assertEquals(standardJava, withMill);
+    }
 
     @Test
     public void testCollectorIgnoringNulls() {
