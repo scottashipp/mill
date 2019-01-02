@@ -48,7 +48,7 @@ public final class ComparatorPredicatesTest {
         String holidaysBeforeIndependenceDay = TestValues.allHolidays()
                 .filter(ComparatorPredicates.where(Holiday::getDate).isLessThan(TestValues.INDEPENDENCE_DAY))
                 .collect(joining(", "));
-        assertEquals("2018-01-01, 2018-05-28", holidaysBeforeIndependenceDay);
+        assertEquals("2018-01-01, 2018-04-01, 2018-05-28", holidaysBeforeIndependenceDay);
     }
 
     @Test
@@ -56,7 +56,7 @@ public final class ComparatorPredicatesTest {
         String holidaysBeforeIndependenceDay = TestValues.allHolidays()
                 .filter(ComparatorPredicates.where(Holiday::getDate).isLessThanOrEqualTo(TestValues.INDEPENDENCE_DAY))
                 .collect(joining(", "));
-        assertEquals("2018-01-01, 2018-05-28, 2018-07-04", holidaysBeforeIndependenceDay);
+        assertEquals("2018-01-01, 2018-04-01, 2018-05-28, 2018-07-04", holidaysBeforeIndependenceDay);
     }
 
     @Test
