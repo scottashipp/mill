@@ -18,29 +18,29 @@ Compatible with Java 8+.
 The following are just a few of the things you'll find in mill.
 
 #### Fluent interface for null conditional operations
-If you have a chain of calls into an object graph (such as `user.getEmail().getDomain().length()`) and you care about avoiding a NullPointerException, you might write code like this:
+If you have a chain of calls into an object graph (such as `user.addresses().billingAddress().zipCode()`) and you care about avoiding a NullPointerException, you might write code like this:
 
 ```java
-    int length = 0;
-    if(user != null) {
-        Email userEmail = user.getEmail();
-        if(userEmail != null ) {
-            String domain = userEmail.getDomain();
-            if(domain != null) {
-                length = domain.length();
-            }
+// standard java
+if(user != null) {
+    UserAddresses userAddresses = user.addresses();
+    if(userAddresses != null) {
+        Address billingAddress = userAddresses.billingAddress();
+        if (billingAddress != null) {
+            return billingAddress.zipCode();
         }
     }
+}
 ```
 
 With the `NullSafe` class, you can convert the above to:
 
 ```java
-int length = NullSafe.of(user)
-                     .call(User::getEmail)
-                     .call(Email::getDomain)
-                     .call(String::length)
-                     .getOrDefault(0));
+String zipCode = NullSafe.of(user)
+                .call(User::addresses)
+                .call(UserAddresses::billingAddress)
+                .call(Address::zipCode)
+                .get();
 ```
 
 #### Join a stream of non-string objects together into a string
@@ -51,7 +51,7 @@ Stream<Holiday> majorUsHolidays = Stream.of(newYears, easter, independenceDay, t
 majorUsHolidays.map(Object::toString).collect(Collectors.joining(", "));
 
 // mill doesn't require the extra map call
-majorUsHolidays.collect(CustomCollectors.joining(", "));
+majorUsHolidays.collect(MoreCollectors.joining(", "));
 ```
 
 #### Filter a stream on multiple criteria
@@ -72,11 +72,11 @@ With standard Java we might apply the multiple filters in order like this.
 ```java
 // standard java requires multiple filters
 String staffAtoMWithShortNames = engineeringTeam
-                     .filter(Objects::nonNull)
-                     .filter(((Predicate<String>)String::isEmpty).negate())
-                     .filter(s -> s.compareTo("A") > 0 && s.compareTo("M") < 0)
-                     .filter(s -> s.length() <= 12)
-                     .collect(Collectors.joining(", "));
+                .filter(Objects::nonNull)
+                .filter(((Predicate<String>)String::isEmpty).negate())
+                .filter(s -> s.compareTo("A") > 0 && s.compareTo("M") < 0)
+                .filter(s -> s.length() <= 12)
+                .collect(Collectors.joining(", "));
 
 // outputs "Jane Brown, Frankie Chen, Jean Limon"
 ```
@@ -86,10 +86,15 @@ predicate composition. This can be very readable with a couple of static
 imports.
 ```java
 // mill
-import static com.scottshipp.code.mill.Strings.*;
+import static com.scottshipp.code.mill.stream.ComparablePredicates.isBetween;
+import static com.scottshipp.code.mill.stream.StringPredicates.*;
 
-Predicate<String> maxLen12AndRangeAToM = nonNull().and(nonEmpty()).and(inRange("A", "M")).and(withMaximumLength(12));
-String staffAtoMWithShortNames = engineeringTeam.filter(maxLen12AndRangeAToM).collect(Collectors.joining(", "));
+Predicate<String> maxLen12AndRangeAToM = nonNull().and(nonEmpty())
+                .and(isBetween("A", "M"))
+                .and(withMaximumLength(12));
+String staffAtoMWithShortNames = engineeringTeam
+                .filter(maxLen12AndRangeAToM)
+                .collect(Collectors.joining(", "));
 ```
 
 #### Filter out elements in a stream that aren't found in other streams
@@ -105,6 +110,11 @@ String staffAtoMWithShortNames = engineeringTeam.filter(maxLen12AndRangeAToM).co
  // mill
  StreamOps.intersection(stream1, stream2, stream3, stream4);
 ```
+
+#### More Examples
+More examples can be found in the API Documentation. 
+
+(To find the API documentation see the Where to find help section below.) 
 
 ## Contribution guidelines
 Please contribute by [forking the project](https://guides.github.com/activities/forking/) and opening a pull request.
