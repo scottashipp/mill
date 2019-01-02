@@ -1,4 +1,4 @@
-mill [![Build Status](https://travis-ci.com/scottashipp/mill.svg?branch=master)](https://travis-ci.com/scottashipp/mill.svg?branch=master)
+mill [![Build Status](https://travis-ci.com/scottashipp/mill.svg?branch=master)](https://travis-ci.com/scottashipp/mill)
 ====
 
 
