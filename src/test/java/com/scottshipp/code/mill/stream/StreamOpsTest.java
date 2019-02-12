@@ -95,6 +95,11 @@ public class StreamOpsTest {
     }
 
     @Test
+    public void testIntersectionOfOneStream() {
+        assertEquals(0, StreamOps.intersection(Stream.empty()).count());
+    }
+
+    @Test
     public void testIntersectionOfTwoStreams() {
         Stream<String> engineeringTeam1 = Stream.of(
                 "Shannon Smith", "Riley Joson",
