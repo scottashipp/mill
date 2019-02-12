@@ -60,19 +60,7 @@ public final class StreamOps {
      * in the returned stream each exist in all of the passed streams
      */
     public static <T> Stream<T> intersection(Stream<T>... streams) {
-        if(streams.length < 1) {
-            return Stream.empty();
-        } else {
-            return intersection(streams[0], Arrays.copyOfRange(streams, 1, streams.length));
-        }
-    }
-
-    private static <T> Stream<T> intersection(Stream<T> result, Stream<T>... streams) {
-        if(streams.length < 2) {
-            return intersection(result, streams[0]);
-        } else {
-            return intersection(result, Arrays.copyOfRange(streams, 1, streams.length - 1));
-        }
+        return Stream.of(streams).reduce(StreamOps::intersection).orElseGet(Stream::empty);
     }
 
     private static <T> Stream<T> intersection(Stream<T> stream1, Stream<T> stream2) {
