@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class StreamOpsTest {
@@ -95,6 +94,11 @@ public class StreamOpsTest {
     }
 
     @Test
+    public void testIntersectionOfOneStream() {
+        assertEquals(0, StreamOps.intersection(Stream.empty()).count());
+    }
+
+    @Test
     public void testIntersectionOfTwoStreams() {
         Stream<String> engineeringTeam1 = Stream.of(
                 "Shannon Smith", "Riley Joson",
@@ -140,6 +144,17 @@ public class StreamOpsTest {
                 StreamOps.intersection(engineeringTeam1, engineeringTeam2, hiringManagers, barRaisers)
                         .collect(Collectors.joining(", "))
         );
+    }
+
+    @Test
+    public void testSpecificIncorrectImplementationOfIntersection() {
+        assertEquals(1,
+                StreamOps.intersection(
+                        Stream.of(1, 2, 3),
+                        Stream.of(1),
+                        Stream.of(1, 2, 3),
+                        Stream.of(1, 2, 3)
+                ).count());
     }
 
     @Test
