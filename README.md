@@ -9,10 +9,43 @@ Java library to make run-of-the-mill tasks more elegant.
 Compatible with Java 8+.
 
 ## In this README
+* How to add Mill to your application
 * Some examples
 * Contribution guidelines
 * Where to find help
 * License
+
+## How to add Mill to your application
+If you are using Maven or another supported dependency management tool, you can use Jitpack to add Mill to your application.
+
+### Maven
+First, add Jitpack (if you haven't already) to the repositories section of your Maven pom.
+
+```
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+Second, add Mill to the dependencies section of your Maven pom.
+
+```
+<dependency>
+    <groupId>com.github.scottashipp</groupId>
+    <artifactId>mill</artifactId>
+    <version>{{latest version tag}}</version>
+</dependency>
+```
+
+Please see the [releases](https://github.com/scottashipp/mill/releases) to find the latest version tag, such as `v1.0`.
+
+### Other
+
+Please visit [Jitpack.io](https://jitpack.io/) for instructions for other popular tools like Gradle and sbt.
+
 
 ## Some examples
 
