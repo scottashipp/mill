@@ -9,11 +9,11 @@ Java library to make run-of-the-mill tasks more elegant.
 Compatible with Java 8+.
 
 ## In this README
-* How to add Mill to your application
-* Some examples
-* Contribution guidelines
-* Where to find help
-* License
+* [How to add Mill to your application](#how-to-add-mill-to-your-application)
+* [Some examples](#some-examples)
+* [Contribution guidelines](#contribution-guidelines)
+* [Where to find help](#where-to-find-help)
+* [License](#license)
 
 ## How to add Mill to your application
 If you are using Maven or another supported dependency management tool, you can use Jitpack to add Mill to your application.
