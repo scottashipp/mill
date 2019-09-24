@@ -8,6 +8,8 @@ Java library to make run-of-the-mill tasks more elegant.
 
 Compatible with Java 8+.
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A7147N8)
+
 ## In this README
 * [How to add Mill to your application](#how-to-add-mill-to-your-application)
 * [Some examples](#some-examples)
@@ -168,3 +170,5 @@ If you found an issue with the library, you are welcome to file an issue on [git
 
 ## License
 Mill is made available under the MIT License. See the LICENSE file for more details.
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A7147N8)
