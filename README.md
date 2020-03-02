@@ -6,9 +6,15 @@ mill [![Build Status](https://travis-ci.com/scottashipp/mill.svg?branch=master)]
 
 Java library to make run-of-the-mill tasks more elegant. 
 
-Compatible with Java 8+.
+### Note: This library is deprecated. 
 
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A7147N8)
+Update March, 2020. I will no longer be maintaining Mill. There are now other libraries with more widespread adoption and some actual funding and a set of active maintainers. (See [StreamEx](https://github.com/amaembo/streamex)).
+
+In addition, [Mill](https://github.com/lihaoyi/mill) is now the name of a build tool for Java and Scala.
+
+Nevertheless, it is still useful at providing some examples of the things you can add to your own codebase to improve working with Java streams or lambdas.
+
+Compatible with Java 8+.
 
 ## In this README
 * [How to add Mill to your application](#how-to-add-mill-to-your-application)
